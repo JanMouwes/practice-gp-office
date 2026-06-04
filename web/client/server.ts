@@ -1,18 +1,15 @@
-import { APP_BASE_HREF } from '@angular/common';
-import { CommonEngine } from '@angular/ssr';
+import {AngularNodeAppEngine, writeResponseToNodeResponse} from '@angular/ssr/node';
 import express from 'express';
-import { fileURLToPath } from 'node:url';
-import { dirname, join, resolve } from 'node:path';
-import bootstrap from './src/main.server';
+import {fileURLToPath} from 'node:url';
+import {dirname, resolve} from 'node:path';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
   const browserDistFolder = resolve(serverDistFolder, '../browser');
-  const indexHtml = join(serverDistFolder, 'index.server.html');
 
-  const commonEngine = new CommonEngine();
+  const engine = new AngularNodeAppEngine();
 
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
@@ -25,19 +22,18 @@ export function app(): express.Express {
   }));
 
   // All regular routes use the Angular engine
-  server.get('*', (req, res, next) => {
-    const { protocol, originalUrl, baseUrl, headers } = req;
-
-    commonEngine
-      .render({
-        bootstrap,
-        documentFilePath: indexHtml,
-        url: `${protocol}://${headers.host}${originalUrl}`,
-        publicPath: browserDistFolder,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+  server.use('*', (req, res, next) => {
+    // taken from https://angular.dev/guide/ssr#nodejs on 04-06-2026
+    engine
+      .handle(req)
+      .then(async (response) => {
+        if (response) {
+          await writeResponseToNodeResponse(response, res);
+        } else {
+          next(); // Pass control to the next middleware
+        }
       })
-      .then((html) => res.send(html))
-      .catch((err) => next(err));
+      .catch(next);
   });
 
   return server;
