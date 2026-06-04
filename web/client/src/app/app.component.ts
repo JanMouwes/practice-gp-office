@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 
 import {RouterOutlet} from '@angular/router';
 import {HeaderComponent} from "./common/navbar/header.component";
@@ -8,6 +8,7 @@ import {HeaderComponent} from "./common/navbar/header.component";
   standalone: true,
   imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.component.css'
 })
 export class AppComponent {
