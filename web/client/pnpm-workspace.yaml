@@ -1,5 +1,7 @@
 allowBuilds:
   esbuild: true
+  lmdb: set this to true or false
+  msgpackr-extract: set this to true or false
   nice-napi: false
 
 minimumReleaseAge: 1440
