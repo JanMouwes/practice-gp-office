@@ -1,0 +1,17 @@
+nav {
+  display: flex;
+  gap: 1rem;
+
+  color: white;
+}
+
+.nav-item {
+  padding: 1em;
+
+  font-size: large;
+  color: darkblue;
+}
+
+nav .active {
+  color: red;
+}

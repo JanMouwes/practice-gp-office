@@ -1,0 +1,25 @@
+<section class="bg-light" id="main-content">
+  <section>
+    <h2>{{content.main.title}}</h2>
+    <h3 class="text-light">{{content.main.subtitle}}</h3>
+  </section>
+  <section class="btn-group-horizontal">
+    <a [href]="content.buttons.makeAppointment.href" class="btn btn-primary">{{content.buttons.makeAppointment.title}}</a>
+    <a [href]="content.buttons.contactUs.href" class="btn btn-secondary">{{content.buttons.contactUs.title}}</a>
+  </section>
+</section>
+<div class="sections" id="extra-info">
+  <section class="bg-light">
+    <h3>{{content.sections.welcome.title}}</h3>
+    <p>{{content.sections.welcome.content}}</p>
+  </section>
+  <section class="bg-light">
+    <h3 class="text-danger">{{content.sections.emergency.title}}</h3>
+    <p>{{content.sections.emergency.content}}</p>
+  </section>
+  <section class="bg-light">
+    <h3>{{content.sections.makeAppointment.title}}</h3>
+    <p>{{content.sections.makeAppointment.content}}</p>
+    <a [href]="content.buttons.makeAppointment.href" class="btn btn-primary">{{content.buttons.makeAppointment.title}}</a>
+  </section>
+</div>

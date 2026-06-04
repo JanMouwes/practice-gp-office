@@ -1,0 +1,38 @@
+:host {
+  --gap: 1em
+}
+
+.sections {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap);
+  width: 100%;
+}
+.sections * {
+  flex-grow: 1;
+}
+
+section {
+  padding: 1em 2em 2em;
+  border-radius: 1em;
+}
+
+
+#main-content {
+  margin: var(--gap) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  padding: 0;
+}
+
+#main-content section {
+  flex-grow: 1;
+}
+
+#extra-info section {
+  flex-grow: 1;
+  max-width: 30%;
+  min-width: 20%;
+}

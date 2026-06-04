@@ -1,0 +1,17 @@
+import {Component, input} from '@angular/core';
+
+@Component({
+  selector: 'app-navbar',
+  standalone: true,
+  imports: [],
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css'
+})
+export class NavbarComponent {
+  links = input.required<NavItem[]>()
+}
+
+type NavItem = {
+  title: string;
+  href: string
+}

@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+
+.bg-light {
+  background-color: rgb(173 216 230 / 0.5);
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+}
+
+
+.text-light {
+  opacity: .7;
+}
+
+.text-danger {
+  color: #dc0000;
+}
+
+.flex {
+  display: flex;
+}
+
+.btn {
+  border: 0;
+  border-radius: .5em;
+  padding: .7em;
+  font-size: 1em;
+  width: fit-content;
+  color: inherit;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+}
+.btn-secondary {
+  background-color: var(--secondary);
+}
+
+.btn-group-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.btn-group-horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: left;
+}
+
