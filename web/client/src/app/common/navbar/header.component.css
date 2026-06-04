@@ -1,0 +1,26 @@
+header {
+  padding: 1em;
+  width: 100%;
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 2em;
+}
+
+header * {
+  width: fit-content;
+}
+
+
+.nav-item {
+  padding: 1em;
+
+  font-size: x-large;
+  color: darkblue;
+}
+
+nav .active {
+  text-decoration: underline .2em;
+  font-weight: bold;
+}

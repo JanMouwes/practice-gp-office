@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
-import {NavbarComponent} from "./common/navbar/navbar.component";
+import {HeaderComponent} from "./common/navbar/header.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavbarComponent],
+  imports: [CommonModule, RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -15,6 +15,8 @@ export class AppComponent {
 
   navLinks = [
     {title: 'home', href: '/home'},
-    {title: 'about', href: '/about'}
+    {title: 'over ons', href: '/about'},
+    {title: 'maak een afspraak', href: '/appointment'},
+    {title: 'contact', href: '/contact'}
   ]
 }

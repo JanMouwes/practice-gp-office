@@ -1,0 +1,8 @@
+<header>
+  <h1>GP Office</h1>
+  <nav class="btn-group-horizontal">
+    @for (link of links(); track link.title) {
+    <a [href]="link.href" class="nav-item" [class.active]="isActive(link.href)">{{link.title}}</a>
+    }
+  </nav>
+</header>
