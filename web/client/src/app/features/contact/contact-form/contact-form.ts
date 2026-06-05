@@ -1,0 +1,65 @@
+import {Component} from '@angular/core';
+
+@Component({
+  selector: 'app-contact-form',
+  imports: [],
+  template: `
+    <form>
+      <div>
+        <label>
+          {{content.nameInput.label}}
+          <input type="text" />
+        </label>
+        <label>
+          {{content.emailInput.label}}
+          <input type="text" />
+        </label>
+        <label>
+          {{content.messageInput.label}}
+          <textarea></textarea>
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">{{content.buttons.submit.label}}</button>
+    </form>
+  `,
+  styles: `
+form {
+  padding: 1em 0;
+  width: 25%;
+}
+label {
+  display: block;
+  padding: .5em 0;
+  font-weight: bold;
+
+  width: 100%;
+  min-width: 10em;
+  max-width: 25em;
+}
+label > input,textarea {
+  display: block;
+  margin: 1rem 0;
+  padding: 1rem;
+  resize: none;
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border:none;
+  border-radius: 1em;
+}`
+})
+export class ContactForm {
+  content = {
+    nameInput: {label: 'Naam'},
+    emailInput: {label: 'E-mail'},
+    messageInput: {label: 'Bericht'},
+    buttons: {
+      submit: {
+        label: 'Versturen',
+      },
+    }
+  }
+
+}
