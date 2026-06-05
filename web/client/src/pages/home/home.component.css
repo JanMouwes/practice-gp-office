@@ -12,12 +12,6 @@
   flex-grow: 1;
 }
 
-section {
-  padding: 1em 2em 2em;
-  border-radius: 1em;
-}
-
-
 #main-content {
   margin: var(--gap) 0;
   display: flex;
