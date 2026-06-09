@@ -1,8 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
+import {HeaderComponent} from './header.component';
+import {beforeEach, describe, expect, it} from "vitest";
 
-describe('NavbarComponent', () => {
+describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
@@ -10,10 +11,11 @@ describe('NavbarComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HeaderComponent]
     })
-    .compileComponents();
+                 .compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('links', [])
     fixture.detectChanges();
   });
 

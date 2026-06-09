@@ -12,7 +12,7 @@ import {HeaderComponent} from "./common/navbar/header.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'gp-office-client';
+  title = 'GP Office';
 
   navLinks = [
     {title: 'home', href: '/home'},
