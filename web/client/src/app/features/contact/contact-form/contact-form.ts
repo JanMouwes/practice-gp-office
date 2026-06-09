@@ -25,7 +25,7 @@ import {Component} from '@angular/core';
   styles: `
 form {
   padding: 1em 0;
-  width: 25%;
+  width: 100%;
 }
 label {
   display: block;
