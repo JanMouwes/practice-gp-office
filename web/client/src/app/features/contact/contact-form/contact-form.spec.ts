@@ -3,14 +3,15 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ContactForm} from './contact-form';
 import {ContactService, DIToken} from '../contact-service/contact-service';
 import {beforeEach, describe, expect, it, Mocked, vi} from "vitest";
+import {ValidEmail} from "../contact-service/valid-email";
 
 describe('ContactForm', () => {
   let component: ContactForm;
   let fixture: ComponentFixture<ContactForm>;
-  let contactServiceSpy: Mocked<ContactService> = createContactServiceSpy()
+  let contactServiceSpy: Mocked<ContactService> = createContactServiceSpy();
 
   beforeEach(async () => {
-    contactServiceSpy = createContactServiceSpy()
+    contactServiceSpy = createContactServiceSpy();
 
     await TestBed.configureTestingModule({
       imports: [ContactForm],
@@ -33,37 +34,34 @@ describe('ContactForm', () => {
         name: 'test name',
         email: 'test@email.com',
         message: 'test message',
-      }
+      };
 
+      const validatedEmail = ValidEmail.parseEmail(testData.email);
       await component.sendContactMessage(testData.name, testData.email, testData.message);
 
       expect(contactServiceSpy.sendContactMessage).toHaveBeenCalledExactlyOnceWith(
         testData.name,
-        testData.email,
+        validatedEmail,
         testData.message
-      )
+      );
     });
     it.each([
         {name: '', email: 'test@email.com', message: 'test message'},
         {name: 'valid name', email: 'test@email.com', message: ''},
         {name: 'valid name', email: '', message: 'valid test message'},
-
-        {name: 'valid name', email: 'invalid email', message: 'valid test message'},
-        {name: 'valid name', email: 'no-tld@email', message: 'valid test message'},
-        {name: 'valid name', email: 'trailing-dot@email.', message: 'valid test message'},
-        {name: 'valid name', email: '@no-name.nl', message: 'valid test message'},
-        {name: 'valid name', email: 'bad-domain@.nl', message: 'valid test message'},
       ]
     )('should not call ContactService with invalid data', async (testData) => {
       await component.sendContactMessage(testData.name, testData.email, testData.message);
 
-      expect(contactServiceSpy.sendContactMessage).not.toHaveBeenCalled()
+      expect(contactServiceSpy.sendContactMessage).not.toHaveBeenCalled();
     });
   });
+
+
 });
 
 function createContactServiceSpy() {
   return {
     sendContactMessage: vi.fn()
-  }
+  };
 }

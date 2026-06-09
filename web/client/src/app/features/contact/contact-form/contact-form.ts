@@ -1,5 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {DIToken} from "../contact-service/contact-service";
+import {ValidEmail} from "../contact-service/valid-email";
 
 @Component({
   selector: 'app-contact-form',
@@ -52,7 +53,7 @@ label > input,textarea {
 }`
 })
 export class ContactForm {
-  // TODO service
+  // TODO service, binding
 
   content = {
     nameInput: {label: 'Naam'},
@@ -68,32 +69,15 @@ export class ContactForm {
   private readonly contactService = inject(DIToken);
 
   async sendContactMessage(name: string, email: string, message: string) {
-    const parsedEmail = parseEmail(email);
+    const parsedEmail = ValidEmail.parseEmail(email);
     if (this.isEmpty(name) || this.isEmpty(message) || parsedEmail === null) {
       return;
     }
 
-    await this.contactService.sendContactMessage(name, email, message);
+    await this.contactService.sendContactMessage(name, parsedEmail, message);
   }
 
   private isEmpty(str: string) {
     return str.length === 0;
   }
-}
-
-function parseEmail(email: string): ValidEmail | null {
-  if (email.length === 0
-    || email.startsWith('@')
-    || !email.includes('@')
-    || !email.includes('.')
-    || email.includes('@.')
-    || email.endsWith('.')) {
-    return null;
-  }
-
-  return {emailString: email};
-}
-
-interface ValidEmail {
-  emailString: string;
 }
