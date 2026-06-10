@@ -7,7 +7,7 @@ RUN npm install -g pnpm
 # copy dependency configuration
 COPY web/client/package.json web/client/pnpm-*.yaml ./
 
-RUN pnpm i
+RUN pnpm ci
 
 FROM base AS dev
 
@@ -16,3 +16,9 @@ EXPOSE 4200
 # add host argument to allow non-localhost connections
 ENTRYPOINT ["pnpm", "start", "--host=0.0.0.0"]
 
+FROM base AS test
+
+COPY web/client/ .
+
+# add host argument to allow non-localhost connections
+ENTRYPOINT ["pnpm", "test"]
