@@ -6,3 +6,5 @@ allowBuilds:
   nice-napi: false
 
 minimumReleaseAge: 1440
+
+confirmModulesPurge: false
