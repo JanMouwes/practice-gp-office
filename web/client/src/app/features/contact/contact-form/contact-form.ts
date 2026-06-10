@@ -1,10 +1,9 @@
-import {Component, inject} from '@angular/core';
-import {DIToken} from "../contact-service/contact-service";
+import {Component, Inject} from '@angular/core';
+import {ContactService, DIToken} from "../contact-service/contact-service";
 import {ValidEmail} from "../contact-service/valid-email";
 
 @Component({
   selector: 'app-contact-form',
-  imports: [],
   template: `
     <form>
       <div>
@@ -53,6 +52,10 @@ label > input,textarea {
 }`
 })
 export class ContactForm {
+  constructor(@Inject(DIToken) private readonly contactService: ContactService) {
+
+  }
+
   // TODO service, binding
 
   content = {
@@ -65,8 +68,6 @@ export class ContactForm {
       },
     }
   };
-
-  private readonly contactService = inject(DIToken);
 
   async sendContactMessage(name: string, email: string, message: string) {
     const parsedEmail = ValidEmail.parseEmail(email);
