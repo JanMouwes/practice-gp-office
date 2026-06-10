@@ -22,3 +22,8 @@ docker build --target test -t gp-practice-test-img --file Dockerfile.dev .
 ```shell
 docker run --rm --name gp-practice-test gp-practice-test-img
 ```
+
+```shell
+# watch mode
+docker run --rm --name gp-practice-test gp-practice-test-img --watch
+```
