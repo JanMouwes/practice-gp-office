@@ -25,5 +25,7 @@ docker run --rm --name gp-practice-test gp-practice-test-img
 
 ```shell
 # watch mode
-docker run --rm --name gp-practice-test gp-practice-test-img --watch
+docker run --rm\
+  --mount type=bind,src=./web/client/,dst=/usr/local/app\
+  --name gp-practice-test gp-practice-test-img --watch
 ```
