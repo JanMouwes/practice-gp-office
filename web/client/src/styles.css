@@ -33,6 +33,11 @@ article h1 {
   font-size: 2.5em
 }
 
+section {
+  padding: 2em;
+  border-radius: 1em;
+}
+
 /* utilities */
 
 .centre-contents {
@@ -45,7 +50,7 @@ article h1 {
 }
 
 .text-light {
-  opacity: .7;
+  opacity: .75;
 }
 
 .text-danger {

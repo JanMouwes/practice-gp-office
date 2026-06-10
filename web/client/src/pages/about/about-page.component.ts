@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-about-page',
-  template: `<section class="bg-light" id="main-content">
+  template: `<article class="bg-light" id="main-content">
   <section>
     <h2>{{content.main.title}}</h2>
     <p class="text-light">{{content.main.body}}</p>
@@ -11,7 +11,7 @@ import {Component} from '@angular/core';
     <a [href]="content.buttons.home.href" class="btn btn-primary">{{content.buttons.home.label}}</a>
     <a [href]="content.buttons.makeAppointment.href" class="btn btn-secondary">{{content.buttons.makeAppointment.label}}</a>
   </section>
-</section>
+</article>
 
   `
 })
