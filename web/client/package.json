@@ -38,11 +38,9 @@
     "typescript": "~6.0.3",
     "vitest": "^4.1.8"
   },
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": ">=11.0.0",
-      "onFail": "download"
-    }
+  "packageManager": {
+    "name": "pnpm",
+    "version": ">=11.0.0",
+    "onFail": "download"
   }
 }
