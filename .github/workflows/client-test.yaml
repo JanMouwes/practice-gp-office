@@ -1,0 +1,16 @@
+name: client-test
+on:
+  push:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: web/client
+    steps:
+      - uses: actions/checkout@v6
+      - name: install pnpm
+        uses: pnpm/action-setup@v6
+      - run: pnpm install
+      - run: pnpm test
