@@ -7,12 +7,12 @@ jobs:
     runs-on: ubuntu-22.04
     defaults:
       run:
-        working-directory: ./web/client
+        working-directory: web/client
     steps:
       - uses: actions/checkout@v6
       - name: install pnpm
         uses: pnpm/action-setup@v6
         with:
-          package_json_file: "${{ inputs.working-directory }}/package.json"
+          package_json_file: /web/client/package.json
       - run: pnpm install
       - run: pnpm test
