@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-22.04
     defaults:
       run:
-        working-directory: web/client
+        working-directory: ./web/client/
     steps:
       - uses: actions/checkout@v6
       - name: install pnpm
