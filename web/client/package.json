@@ -37,5 +37,12 @@
     "jsdom": "^29.1.1",
     "typescript": "~6.0.3",
     "vitest": "^4.1.8"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=11.0.0",
+      "onFail": "download"
+    }
   }
 }
